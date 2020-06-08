@@ -1,9 +1,15 @@
-import React from 'react';
+import React from "react";
+import Navigation from "./components/Navigation";
+import Header from "./components/Header";
+import Camplist from "./components/Camplist";
 
-function App() {
-  return (
-    <h1>Hello world!</h1>
-  );
-}
+
+const App = () => (
+    <>
+        <Navigation />
+        <Header />
+        <Camplist />
+    </>
+);
 
 export default App;

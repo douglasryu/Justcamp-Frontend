@@ -1,0 +1,178 @@
+body {
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Calibre", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: #333333;
+    /* display: flex; */
+    /* justify-content: space-around; */
+}
+
+/* Nav bar css */
+.nav-container {
+    width: 100%;
+    height: 60px;
+    background-color: #FDFDFD;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-bottom: 1px solid #EBEBEB;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+.nav__logo {
+    margin-right: auto;
+    font-size: 24px;
+    margin-left: 28px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.nav__item {
+    margin: 0px 12px;
+    padding-bottom: 2px;
+    box-sizing: border-box;
+    border-bottom: 1.5px solid transparent;
+    position: relative;
+    top: 1.5px;
+    transition: border-bottom 0.2s ease-in-out 0s;
+}
+
+.nav__host {
+    margin-right: 30px;
+}
+
+.nav__item:hover {
+    border-bottom: 1.5px solid #40d9ac;
+}
+
+
+/* Header css */
+.header__container {
+    height: 150px;
+    margin: auto;
+    margin-top: 130px;
+    max-width: 1020px;
+    width: 100%;
+}
+
+.header__maintext {
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.header__subtext {
+    font-size: 22px;
+    font-weight: 400;
+    width: 515px;
+    line-height: 25px;
+    margin: 20px 0px 50px 0px;
+}
+
+.header__form {
+    height: 60px;
+    padding: 17px 0px 17px 0px;
+    box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.1);
+    display: flex;
+}
+
+.header__input {
+    width: 67%;
+    height: 60px;
+    font-size: 18px;
+    padding-left: 40px;
+    border: 1px solid #ebebeb;
+    box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.1);
+    align-self: center;
+    margin-right: auto;
+}
+
+.header__search-icon {
+    position: relative;
+    left: 40px;
+    top: 15px;
+}
+
+.header__select {
+    padding: 10px;
+    margin: 0px auto;
+}
+
+.header__form-button {
+    margin: 0px auto;
+    background-color: #40d9ac;
+    color: #ffffff;
+    width: 110px;
+    height: 60px;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 2px;
+    text-align: center;
+}
+
+
+/* Camplist css */
+.camplist {
+    max-width: 1060px;
+    width: 100%;
+    position: relative;
+    top: 150px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    /* justify-content: space-around; */
+    justify-items: center;
+}
+
+/* Campcard css */
+.campentry {
+    margin: 25px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    min-width: 300px;
+    height: 310px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.campentry__photo-container {
+    overflow: hidden;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.campentry__text-contianer {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 10px;
+    height: auto;
+    justify-content: space-between;
+}
+
+.campentry__text-header {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 5px 5px 0px 5px;
+    margin-top: 15px;
+}
+
+.campentry__text {
+    font-size: 14px;
+    color: #757575;
+    margin: 0px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.campentry__price {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 20px 5px 5px 5px;
+    align-self: flex-end;
+}
