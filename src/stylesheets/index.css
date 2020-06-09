@@ -32,7 +32,8 @@ body {
 }
 
 .nav__item {
-    margin: 0px 12px;
+    font-size: 15px;
+    margin: 0px 15px;
     padding-bottom: 2px;
     box-sizing: border-box;
     border-bottom: 1.5px solid transparent;
@@ -41,20 +42,34 @@ body {
     transition: border-bottom 0.2s ease-in-out 0s;
 }
 
-.nav__host {
-    margin-right: 30px;
-}
-
 .nav__item:hover {
     border-bottom: 1.5px solid #40d9ac;
 }
 
+.nav__host {
+    font-size: 15px;
+    margin-right: 20px;
+    background-color: #40d9ac;
+    color: #ffffff;
+    border: 3px solid #40d9ac;
+    width: 110px;
+    height: 35px;
+    font-weight: 700;
+    border-radius: 4px;
+    text-align: center;
+    transition: all 0.25s ease 0s;
+}
+
+.nav__host:hover {
+    background-color: #fdfdfd;
+    color: #40d9ac;
+}
 
 /* Header css */
 .header__container {
     height: 150px;
     margin: auto;
-    margin-top: 130px;
+    margin-top: 110px;
     max-width: 1020px;
     width: 100%;
 }
@@ -74,7 +89,7 @@ body {
 
 .header__form {
     height: 60px;
-    padding: 17px 0px 17px 0px;
+    padding: 17px 17px 17px 0px;
     box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.1);
     display: flex;
 }
@@ -97,20 +112,32 @@ body {
 }
 
 .header__select {
+    font-size: 15px;
+    font-weight: 500;
+    color: #333333;
     padding: 10px;
     margin: 0px auto;
+    border: 1px solid #ebebeb;
+    box-shadow: 1px 2px 5px 1px rgba(0, 0, 0, 0.1);
 }
 
 .header__form-button {
     margin: 0px auto;
     background-color: #40d9ac;
     color: #ffffff;
-    width: 110px;
-    height: 60px;
+    width: 104px;
+    height: 54px;
     font-size: 18px;
     font-weight: 500;
     border-radius: 2px;
     text-align: center;
+    border: 3px solid #40d9ac;
+    transition: all 0.25s ease 0s;
+}
+
+.header__form-button:hover {
+    background-color: #fdfdfd;
+    color: #40d9ac;
 }
 
 
@@ -175,4 +202,19 @@ body {
     font-weight: 500;
     margin: 20px 5px 5px 5px;
     align-self: flex-end;
+}
+
+/* About css */
+.about__container {
+    position: relative;
+    top: 300px;
+    border-top: 1px solid #ebebeb;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about__image {
+    width: 300px;
+    height: 300px;
 }
