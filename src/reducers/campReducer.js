@@ -1,13 +1,13 @@
 import { LOAD_CAMPS, LOAD_CAMP } from "../actions/campActions";
 
-const campReducer = (state = {}, action) => {
+const campReducer = (state = [], action) => {
     Object.freeze(state);
 
-    let nextState = Object.assign({}, state);
+    let nextState = Object.assign([], state);
 
     switch (action.type) {
         case LOAD_CAMPS:
-            let newState = {}
+            let newState = [];
             action.camps.forEach(camp => newState[camp.id] = camp)
             return Object.assign(nextState, newState);
         case LOAD_CAMP:

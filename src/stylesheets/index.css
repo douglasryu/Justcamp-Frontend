@@ -21,6 +21,7 @@ body {
     position: fixed;
     top: 0px;
     left: 0px;
+    z-index: 1;
 }
 
 .nav__logo {
@@ -29,6 +30,11 @@ body {
     margin-left: 28px;
     font-weight: 700;
     letter-spacing: 1px;
+}
+
+.nav__icon {
+    width: 20px;
+    display: inline-block
 }
 
 .nav__item {
@@ -64,6 +70,94 @@ body {
     background-color: #fdfdfd;
     color: #40d9ac;
 }
+
+/* Modal css */
+.modal__background {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 2;
+}
+
+.modal__child {
+    position: relative;
+    top: 50px;
+    margin: 0 auto;
+    width: 380px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+    animation-name: slidein;
+    animation-duration: 0.5s;
+}
+
+@keyframes slidein {
+    from {
+        top: -200px;
+    }
+    to {
+        top: 50px;
+    }
+}
+
+.modal__header {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 40px;
+    padding-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form__container {
+    display: flex;
+    flex-direction: column;
+}
+
+.form__input-name-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form__input-firstname {
+    font-size: 18px;
+    border: 1px solid #000000;
+    margin: 20px 0px;
+    padding: 15px 20px;
+    width: 110px;
+    margin-right: 5px;
+}
+
+.form__input-lastname {
+    font-size: 18px;
+    border: 1px solid #000000;
+    margin: 20px 0px;
+    padding: 15px 20px;
+    width: 110px;
+    margin-left: 5px;
+}
+
+.form__input {
+    font-size: 18px;
+    border: 1px solid #000000;
+    margin: 20px 30px;
+    padding: 15px 20px;
+}
+
+.form__button {
+    background-color: #40d9ac;
+    color: #ffffff;
+    font-size: 18px;
+    margin: 0px 30px;
+    margin-top: 10px;
+    padding: 20px 0px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
 
 /* Header css */
 .header__container {
@@ -214,7 +308,136 @@ body {
     align-items: center;
 }
 
+.about__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .about__image {
     width: 300px;
     height: 300px;
+}
+
+.about__header {
+    font-size: 24px;
+    font-weight: 600;
+    width: 60%;
+    text-align: center;
+}
+
+/* Press css */
+.press__container {
+    position: relative;
+    top: 400px;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #ebebeb;
+}
+
+.press__header {
+    margin: 30px auto 30px auto;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.press__icon-container {
+    width: 50%;
+    margin: 0px auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.press__icon {
+    opacity: 0.4;
+}
+
+/* Footer css */
+.footer__border {
+    position: relative;
+    top: 500px;
+    border-top: 1px solid #ebebeb;
+
+}
+
+.footer__container {
+    width: 60%;
+    margin: 0px auto;
+}
+
+.footer__logo {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.footer__icon {
+    width: 20px;
+    display: inline-block;
+    color: rgb(231, 73, 73);
+    filter: invert(40%) sepia(11%) saturate(7488%) hue-rotate(333deg) brightness(101%) contrast(81%);
+}
+
+.footer__sections {
+    display: grid;
+    grid-template-columns: 1fr 1fr 4fr;
+}
+
+.footer__section-header {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+.footer__section-item {
+    font-size: 15px;
+    margin-bottom: 10px;
+    cursor: not-allowed;
+}
+
+.footer__section-text {
+    font-size: 15px;
+    line-height: 25px;
+}
+
+.createdby {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.createdby__name {
+    font-size: 15px;
+}
+
+.createdby__name:hover {
+    color: rgb(231, 73, 73);
+    cursor: pointer;
+}
+
+.createdby__github {
+    position: relative;
+    top: 5px;
+    margin-left: 5px;
+}
+
+.footer__end {
+    margin-top: 40px;
+    height: 60px;
+    background-color: #000000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer__end-left {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.footer__end-right {
+    color: #ffffff;
+    font-size: 14px;
 }

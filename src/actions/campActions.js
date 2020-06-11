@@ -7,7 +7,13 @@ const loadCamps = camps => ({ type: LOAD_CAMPS, camps });
 const loadCamp = camp => ({ type: LOAD_CAMP, camp });
 
 export const fetchCamps = () => async (dispatch) => {
-    const response = await fetch(`${baseUrl}/camps`);
+    const token = window.localStorage.getItem("justcamp/authentication/token");
+    const options = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    const response = await fetch(`${baseUrl}/camps`, options);
 
     if (response.ok) {
         const camps = await response.json();
@@ -16,7 +22,13 @@ export const fetchCamps = () => async (dispatch) => {
 }
 
 export const fetchCamp = (campId) => async (dispatch) => {
-    const response = await fetch(`${baseUrl}/camps/${campId}`);
+    const token = window.localStorage.getItem("justcamp/authentication/token");
+    const options = {
+        headers: {
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    const response = await fetch(`${baseUrl}/camps/${campId}`, options);
 
     if (response.ok) {
         const camp = await response.json();
