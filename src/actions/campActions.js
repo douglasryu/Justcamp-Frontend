@@ -3,7 +3,7 @@ import { baseUrl } from '../config';
 export const LOAD_CAMPS = "justcamp/campData/LOAD_CAMPS";
 export const LOAD_CAMP = "justcamp/campData/LOAD_CAMP";
 
-const loadCamps = camps => ({ type: LOAD_CAMPS, camps });
+const loadCamps = list => ({ type: LOAD_CAMPS, list });
 const loadCamp = camp => ({ type: LOAD_CAMP, camp });
 
 export const fetchCamps = () => async (dispatch) => {
@@ -16,8 +16,8 @@ export const fetchCamps = () => async (dispatch) => {
     const response = await fetch(`${baseUrl}/camps`, options);
 
     if (response.ok) {
-        const camps = await response.json();
-        dispatch(loadCamps(camps));
+        const list = await response.json();
+        dispatch(loadCamps(list));
     }
 }
 

@@ -4,7 +4,7 @@ export const TOKEN_KEY = "justcamp/authentication/token";
 export const SET_TOKEN = "justcamp/authentication/SET_TOKEN";
 export const REMOVE_TOKEN = "justcamp/authentication/REMOVE_TOKEN";
 
-const removeToken = token => ({ type: REMOVE_TOKEN });
+const removeToken = () => ({ type: REMOVE_TOKEN });
 const setToken = token => ({ type: SET_TOKEN, token });
 
 export const loadToken = () => async dispatch => {
@@ -14,17 +14,31 @@ export const loadToken = () => async dispatch => {
     }
 };
 
+export const createUser = (firstName, lastName, email, password, zipcode) => async dispatch => {
+    const response = await fetch(`${baseUrl}/users/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ firstName, lastName, email, password, zipcode }),
+    });
+
+    if (response.ok) {
+        const { token, user } = await response.json();
+        window.localStorage.setItem(TOKEN_KEY, token);
+        dispatch(setToken(token, user));
+    }
+}
+
 export const login = (email, password) => async dispatch => {
-    const response = await fetch(`${baseUrl}/session`, {
-        method: 'PUT',
+    const response = await fetch(`${baseUrl}/users/session`, {
+        method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
     });
 
     if (response.ok) {
-        const { token } = await response.json();
+        const { token, user } = await response.json();
         window.localStorage.setItem(TOKEN_KEY, token);
-        dispatch(setToken(token));
+        dispatch(setToken(token, user));
     }
 };
 
