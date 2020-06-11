@@ -9,7 +9,7 @@ const Press = () => {
             <div className="press__icon-container">
                 {imagesArray.map(image => {
                     return (
-                        <img key={image} className="press__icon" src={require(`../assets/press_logos/${image}.png`)} />
+                        <img key={image} src={require(`../assets/press_logos/${image}.png`)} alt={image} className="press__icon" />
                     );
                 })}
             </div>

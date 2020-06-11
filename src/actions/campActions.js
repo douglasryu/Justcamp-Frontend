@@ -7,13 +7,9 @@ const loadCamps = list => ({ type: LOAD_CAMPS, list });
 const loadCamp = camp => ({ type: LOAD_CAMP, camp });
 
 export const fetchCamps = () => async (dispatch) => {
-    const token = window.localStorage.getItem("justcamp/authentication/token");
-    const options = {
-        headers: {
-            Authorization: `Bearer ${token}`,
-        }
-    };
-    const response = await fetch(`${baseUrl}/camps`, options);
+    // const token = window.localStorage.getItem("justcamp/authentication/token");
+
+    const response = await fetch(`${baseUrl}/camps`);
 
     if (response.ok) {
         const list = await response.json();

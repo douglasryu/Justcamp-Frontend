@@ -16,7 +16,7 @@ const Header = () => {
         <div className="header__container">
             <div className="header__maintext">Find yourself outside.</div>
             <div className="header__subtext">Book unique camping experiences on over <strong>300,000</strong> campsites, cabins, RV parks, public parks and more.</div>
-            <form className="header__form">
+            <form onSubmit={handleSubmit} className="header__form">
                 <SearchIcon className="header__search-icon" style={{ fontSize: 30 }} />
                 <input type="search" value={inputValue} onChange={updateInputValue} className="header__input" placeholder="Try Yosemite, Napa, Moab..."></input>
                 <select className="header__select">

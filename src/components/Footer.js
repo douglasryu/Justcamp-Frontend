@@ -4,7 +4,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 const Footer = () => (
     <div className="footer__border">
         <div className="footer__container">
-            <div className="footer__logo">JUSTC<img src={require("../assets/app_logos/logoblack.svg")} className="footer__icon" />MP</div>
+            <div className="footer__logo">JUSTC<img src={require("../assets/app_logos/logoblack.svg")} alt="logo" className="footer__icon" />MP</div>
             <div className="footer__sections">
                 <div className="footer__section1">
                     <div className="footer__section-header">About us</div>
@@ -32,7 +32,7 @@ const Footer = () => (
         </div>
         <div className="footer__end">
             <div className="footer__end-left">© 2020 Justcamp, Inc. All rights reserved.</div>
-            <div className="footer__end-right">Justcamp is created with ❤️ and hope for our future</div>
+            <div className="footer__end-right">Justcamp is created with <span role="img" aria-label="love">❤️</span> and hope for our future</div>
         </div>
 
     </div>
