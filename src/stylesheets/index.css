@@ -298,6 +298,258 @@ body {
     align-self: flex-end;
 }
 
+/* Camp Details Page css */
+.camp-header__container {
+    position: relative;
+    top: -150px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.camp-header__image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 500px;
+}
+
+.camp-header__image {
+    display: block;
+    max-height: 500px;
+    height: 500px;
+    max-width: 700px;
+    margin-left: 40px;
+}
+
+.previous {
+    font-size: 40px;
+    position: absolute;
+    top: 210px;
+    left: 30px;
+}
+
+.next {
+    font-size: 40px;
+    position: absolute;
+    top: 210px;
+    right: 30px;
+}
+
+.camp-header__header {
+    position: relative;
+    top: 50px;
+    left: 30%;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.camp-header__host-details {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 100px;
+    left: 30%;
+}
+
+.camp-header__host-image {
+    width: 50px;
+    padding: 2px;
+    border-radius: 50%;
+    filter: invert(40%) sepia(11%) saturate(7488%) hue-rotate(333deg) brightness(101%) contrast(81%);
+    border: 1px solid rgba(0,0,0,0.4);
+}
+
+.camp-header__hostedby {
+    position: relative;
+    bottom: 45px;
+    left: 60px;
+    font-size: 15px;
+    font-weight: 700;
+    width: 100px;
+}
+
+.camp-header__host-name {
+    position: relative;
+    bottom: 45px;
+    left: 60px;
+    font-size: 15px;
+    width: 100px;
+}
+
+.camp-header__details-summary {
+    font-size: 15px;
+    width: 500px;
+    height: 500px;
+    position: relative;
+    bottom: 85px;
+    left: 10%;
+    margin-left: 40px;
+}
+
+.booking__form-container {
+    position: sticky;
+    top: 600px;
+    left: 70vw;
+    background-color: #ffffff;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 2px;
+    width: 300px;
+    height: auto;
+    z-index: 1;
+}
+
+.booking__form-price {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 20px 0px 3px 10px;
+}
+
+.booking__pernight {
+    color: #757575;
+    padding: 0px 0px 20px 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.booking__logistics {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+}
+
+.booking__form-checkin {
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 0px 5px 10px;
+}
+
+.booking__form-checkin-input {
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    top: 5px;
+}
+
+.booking__form-checkout {
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 0px 5px 10px;
+}
+
+.booking__form-checkout-input {
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    top: 5px;
+}
+
+.booking__form-guest {
+    font-size: 15px;
+    font-weight: 700;
+    padding: 14px 0px 5px 15px;
+}
+
+.booking__form-guest-input {
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    top: 5px;
+    left: 22px;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+}
+
+.booking__form-subtotal-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    font-weight: 700;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.booking__form-subtotal {
+    margin: 20px 0px 20px 10px;
+}
+
+.booking__form-subtotal-value {
+    margin: 20px 10px 20px 0px;
+}
+
+.booking__form-button {
+    display: block;
+    padding: 20px 95px;
+    margin: 10px auto;
+    background-color: #40d9ac;
+    border-radius: 2px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.camp-information__container {
+    position: relative;
+    top: -400px;
+    left: 30%;
+}
+
+.camparea__container {
+    display: flex;
+    /* width: 400px; */
+}
+
+.camparea__type-container {
+    display: flex;
+    align-items: center;
+}
+
+.camparea__header {
+    margin-right: 100px;
+    font-size: 20px;
+    font-weight: 700;
+    border: 1px solid rgba(0,0,0,0.1);;
+    padding: 20px 20px;
+}
+
+.camparea__icon {
+    width: 20px;
+    display: inline-block;
+    margin: 15px 0px 0px 0px;
+}
+
+.camparea__type {
+    font-size: 15px;
+    font-weight: 500;
+    display: inline-block;
+    margin: 15px 0px 0px 10px;
+}
+
+
 /* About css */
 .about__container {
     position: relative;

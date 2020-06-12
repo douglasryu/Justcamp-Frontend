@@ -1,12 +1,12 @@
 import React from "react";
 
-import CampInfo from "./CampInfo";
+import CampDetailHeader from "./CampDetailHeader";
 import Footer from "./Footer";
 
-const CampDetailPage = () => {
+const CampDetailPage = props => {
     return (
         <>
-            <CampInfo />
+            <CampDetailHeader {...props} />
             <Footer />
         </>
     );
