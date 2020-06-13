@@ -6,14 +6,14 @@ import About from "./About";
 import Press from "./Press";
 import Footer from "./Footer";
 
-const Mainpage = () => {
+const Mainpage = props => {
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
     return (
         <>
-            <Header />
+            <Header {...props} />
             <Camplist />
             <About />
             <Press />
