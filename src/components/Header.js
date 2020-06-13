@@ -1,13 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import SearchIcon from '@material-ui/icons/Search';
 import Mainsearch from "./Mainsearch";
 
 const Header = props => {
-    // const [inputValue, setInputValue] = useState("");
-
-    // const updateInputValue = event => {
-    //     setInputValue(event.target.value);
-    // }
 
     const handleSubmit = event => {
         event.preventDefault();

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 import { fetchCamps } from "../actions/campActions";
+import { openModal } from "../actions/modalActions";
 import { connect } from "react-redux";
 import GoogleApiWrapper from "./MapContainer";
+import { makeReservation } from "../actions/tripActions";
 
 const CampDetailHeader = props => {
     useEffect(() => {
@@ -21,12 +23,20 @@ const CampDetailHeader = props => {
     const [checkInDate, setCheckInDate] = useState(new Date());
     const [checkOutDate, setCheckOutDate] = useState(new Date());
     const [guestNumber, setGuestNumber] = useState(0);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        if (props.loginStatus) {
+            setIsLoggedIn(true);
+        } else {
+            setIsLoggedIn(false);
+        }
+    }, [props.loginStatus])
 
     const handleCheckinDate = event => {
         setCheckInDate(event.target.value);
     }
 
-    // let days;
     const handleCheckoutDate = event => {
         setCheckOutDate(event.target.value);
     }
@@ -35,20 +45,24 @@ const CampDetailHeader = props => {
         setGuestNumber(event.target.value);
     }
 
+    const handleSubmit = event => {
+        event.preventDefault();
+        const totalCost = daysBetween(new Date(checkInDate), new Date(checkOutDate)) * campDetailObj.price;
+        props.makeReservation(props.loginStatus, campId, new Date(checkInDate), new Date(checkOutDate), totalCost);
+        props.history.push("/profile");
+    }
+
+    const handleSignIn = event => {
+        event.preventDefault();
+        props.openModal("login");
+    }
+
     const daysBetween = (startDate, endDate) => {
         const oneDay = 1000 * 60 * 60 * 24;
         const start = Date.UTC(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
         const end = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
         return (start - end) / oneDay;
     }
-
-    // setInterval(() => {
-    //     setSubtotal(daysBetween(new Date(checkInDate), new Date(checkOutDate)) * campDetailObj.price)
-    // }, 2000);
-
-    // useEffect(() => {
-    //     setSubtotal((campDetailObj.price) * days);
-    // }, [])
 
     if (Object.keys(props.campsList).length < 1) {
         return null;
@@ -95,7 +109,7 @@ const CampDetailHeader = props => {
                             <div className="booking__form-subtotal">Subtotal</div>
                             <div className="booking__form-subtotal-value">${daysBetween(new Date(checkInDate), new Date(checkOutDate)) * campDetailObj.price >= 0 ? daysBetween(new Date(checkInDate), new Date(checkOutDate)) * campDetailObj.price : 0}</div>
                         </div>
-                        <button type="submit" className="booking__form-button">Instant book</button>
+                        {isLoggedIn ? <button type="submit" onClick={handleSubmit} className="booking__form-button">Instant book</button> : <button onClick={handleSignIn} className="booking__form-button-signin">Sign in</button>}
                     </form>
                 </div>
             </div>
@@ -195,13 +209,16 @@ const CampDetailHeader = props => {
 
 const mapStateToProps = (state) => {
     return {
-        campsList: state.camps
+        campsList: state.camps,
+        loginStatus: state.session.id
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         fetchCamps: () => dispatch(fetchCamps()),
+        openModal: (modal) => dispatch(openModal(modal)),
+        makeReservation: (user_id, campsite_id, start_date, end_date, totalCost) => dispatch(makeReservation(user_id, campsite_id, start_date, end_date, totalCost))
     };
 };
 

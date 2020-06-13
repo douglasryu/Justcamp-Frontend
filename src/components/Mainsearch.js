@@ -39,7 +39,7 @@ class Mainsearch extends React.Component {
         if (suggestions.length === 0) return null;
         return (
             <ul className="search__suggestion-wrapper">
-                {suggestions.map((item) => <li key={item} onClick={() => this.suggestionSelected(item)} className="search__suggestion"><img className="search__suggestion-logo" src={require("../assets/app_logos/logoblack.svg")} /> {item}</li>)}
+                {suggestions.map((item) => <li key={item} onClick={() => this.suggestionSelected(item)} className="search__suggestion"><img className="search__suggestion-logo" src={require("../assets/app_logos/logoblack.svg")} alt="suggestion-logo" /> {item}</li>)}
             </ul>
         )
     }

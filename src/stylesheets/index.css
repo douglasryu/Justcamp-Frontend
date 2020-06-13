@@ -80,7 +80,7 @@ body {
     width: 100%;
     height: 100%;
     background-color: rgba(255, 255, 255, 0.8);
-    z-index: 2;
+    z-index: 3;
 }
 
 .modal__child {
@@ -570,6 +570,17 @@ input[type=number]::-webkit-inner-spin-button {
     font-weight: 700;
 }
 
+.booking__form-button-signin {
+    display: block;
+    padding: 20px 115px;
+    margin: 10px auto;
+    background-color: #40d9ac;
+    border-radius: 2px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+}
+
 .camp-information__container {
     position: relative;
     top: -1000px;
@@ -798,4 +809,157 @@ input[type=number]::-webkit-inner-spin-button {
     position: relative;
     top: -830px;
     margin-bottom: -700px;
+}
+
+
+
+/* Profile Page css */
+.profile__userinfo-container {
+    position: relative;
+    top: 130px;
+    left: 15%;
+}
+
+.profile__userinfo-container {
+    width: 280px;
+    height: auto;
+    /* border: 1px solid #EBEBEB; */
+    border: 1px solid black;
+}
+
+.profile__userinfo-picname {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.profile__pic {
+    width: 50px;
+    padding: 2px;
+    border-radius: 50%;
+    margin: 30px;
+    filter: invert(40%) sepia(11%) saturate(7488%) hue-rotate(333deg) brightness(101%) contrast(81%);
+    border: 1px solid rgba(0,0,0,0.4);
+}
+
+.profile__name {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.profile__userinfo-since {
+    font-size: 13px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+
+.profile__userinfo-from {
+    font-size: 13px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+.profile__userinfo-from-icon {
+    width: 15px;
+    display: inline-block;
+}
+
+.profile__userinfo-bio {
+    font-size: 13px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 30px;
+}
+
+.profile__userinfo-intro {
+    font-weight: 700;
+}
+
+.profile__trusted {
+    position: relative;
+    top: 160px;
+    left: 15%;
+    width: 280px;
+    height: auto;
+    /* border: 1px solid #EBEBEB; */
+    border: 1px solid black;
+}
+
+.profile__trusted-header {
+    font-size: 13px;
+    font-weight: 700;
+    margin: 20px 0px 10px 15px;
+}
+
+.profile__trusted-email {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    margin: 0px 5px 10px 15px;
+}
+
+.profile__trusted-icon {
+    width: 15px;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.profile__trusted-fbconnect {
+    display: flex;
+    font-size: 13px;
+    align-items: center;
+}
+
+.profile__trusted-fb {
+    margin-left: 15px;
+    margin-bottom: 20px;
+}
+
+.profile__trusted-connect {
+    margin-left: auto;
+    margin-right: 15px;
+    margin-bottom: 20px;
+    background-color: #3b5998;
+    color: #ffffff;
+    padding: 5px 7px;
+    border-radius: 2px;
+}
+
+.profile__right {
+    position: relative;
+    left: 35%;
+    top: -220px;
+}
+
+.profile__tripreview-container {
+    display: flex;
+    width: 400px;
+}
+
+.profile__trip {
+    /* border: 1px solid black; */
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.profile__trip-num {
+    font-size: 19px;
+}
+
+.profile__trip-text {
+    margin-top: 10px;
+}
+
+.profile__review {
+    margin-left: 40px;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.profile__review-num {
+    font-size: 19px;
+}
+
+.profile__review-text {
+    margin-top: 10px;
 }

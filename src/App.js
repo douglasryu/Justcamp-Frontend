@@ -8,6 +8,7 @@ import { loadToken } from "./actions/sessionActions";
 import { fetchCamps } from "./actions/campActions";
 import { BrowserRouter, Route } from "react-router-dom";
 import CampDetailPage from "./components/CampDetailPage";
+import ProfilePage from "./components/ProfilePage";
 
 const App = props => {
     useEffect(() => {
@@ -30,6 +31,7 @@ const App = props => {
             <Navigation />
             <Route exact path="/" component={Mainpage} />
             <Route path="/camps/:campId" component={CampDetailPage} />
+            <Route path="/profile" component={ProfilePage} />
         </BrowserRouter>
     );
 };
