@@ -301,7 +301,7 @@ body {
 /* Camp Details Page css */
 .camp-header__container {
     position: relative;
-    top: -150px;
+    top: -750px;
     overflow-x: hidden;
     overflow-y: hidden;
 }
@@ -385,11 +385,25 @@ body {
     bottom: 85px;
     left: 10%;
     margin-left: 40px;
+    z-index: 2;
+}
+
+.invisible {
+    top: 0;
+    height: 600px;
+    z-index: 4;
+    overflow-x: hidden;
+}
+
+.form-invisible {
+    z-index: 1;
+    position: sticky;
+    top: 60px;
 }
 
 .booking__form-container {
-    position: sticky;
-    top: 600px;
+    position: relative;
+    top: 0px;
     left: 70vw;
     background-color: #ffffff;
     border: 1px solid rgba(0,0,0,0.1);
@@ -514,13 +528,14 @@ input[type=number]::-webkit-inner-spin-button {
 
 .camp-information__container {
     position: relative;
-    top: -400px;
+    top: -1000px;
     left: 30%;
+    margin-bottom: 10px;
 }
 
 .camparea__container {
     display: flex;
-    /* width: 400px; */
+    width: 800px;
 }
 
 .camparea__type-container {
@@ -529,10 +544,10 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .camparea__header {
-    margin-right: 100px;
+    margin-right: 30px;
     font-size: 20px;
     font-weight: 700;
-    border: 1px solid rgba(0,0,0,0.1);;
+    border: 1px solid rgba(0,0,0,0.1);
     padding: 20px 20px;
 }
 
@@ -547,6 +562,47 @@ input[type=number]::-webkit-inner-spin-button {
     font-weight: 500;
     display: inline-block;
     margin: 15px 0px 0px 10px;
+}
+
+.camp-activities__container {
+    position: relative;
+    top: -930px;
+    left: 30%;
+    width: 730px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 60px 20px 20px 20px;
+}
+
+.camp-activities__header {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.camp-activities__text {
+    font-size: 15px;
+    padding-top: 5px;
+    color: #757575
+}
+
+.camp-activities__icon-container {
+    display: flex;
+    width: 1000px;
+}
+
+.camp-activities__icon {
+    width: 70px;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 2px;
+    padding: 10px 10px;
+    margin: 15px 15px 0px 0px;
+}
+
+.camp-activities__icon-text {
+    font-size: 15px;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 10px;
 }
 
 
@@ -692,4 +748,10 @@ input[type=number]::-webkit-inner-spin-button {
 .footer__end-right {
     color: #ffffff;
     font-size: 14px;
+}
+
+.map-container {
+    position: relative;
+    top: -830px;
+    margin-bottom: -700px;
 }

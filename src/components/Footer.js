@@ -23,7 +23,7 @@ const Footer = () => (
                     <div className="footer__section-item">Hosting FAQ</div>
                 </div>
                 <div className="footer__section3">
-                    <div className="footer__section-header">Hipcamp is everywhere you want to camp.</div>
+                    <div className="footer__section-header">Justcamp is everywhere you want to camp.</div>
                     <div className="footer__section-text">Discover unique experiences on ranches, nature preserves, farms, vineyards, and public campgrounds across the U.S. Book tent camping, treehouses, cabins, yurts, primitive backcountry sites, car camping, airstreams, tiny houses, RV camping, glamping tents and more.</div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import Header from "./Header";
 import Camplist from "./Camplist";
@@ -7,6 +7,10 @@ import Press from "./Press";
 import Footer from "./Footer";
 
 const Mainpage = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <>
             <Header />

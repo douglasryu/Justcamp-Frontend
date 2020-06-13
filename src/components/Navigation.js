@@ -15,7 +15,7 @@ const Navigation = props => {
                     <Link to="/" className="nav__logo">JUSTC<img src={require("../assets/app_logos/logoblack.svg")} alt="logo" className="nav__icon" />MP</Link>
                     <Link to="/discover" className="nav__item">Near me</Link>
                     <Link to="/about" className="nav__item">About</Link>
-                    <Link to="/invite" className="nav__item">Earn Jumpcash</Link>
+                    <Link to="/invite" className="nav__item">Earn Justcash</Link>
                     <button onClick={() => props.openModal("login")} className="nav__item">Log in</button>
                     <button onClick={() => props.openModal("signup")} className="nav__item">Sign up</button>
                     <button className="nav__host">Start hosting</button>
@@ -29,7 +29,7 @@ const Navigation = props => {
                     <Link to="/" className="nav__logo">JUSTC<img src={require("../assets/app_logos/logoblack.svg")} alt="logo" className="nav__icon" />MP</Link>
                     <Link to="/discover" className="nav__item">Near me</Link>
                     <Link to="/about" className="nav__item">About</Link>
-                    <Link to="/invite" className="nav__item">Earn Jumpcash</Link>
+                    <Link to="/invite" className="nav__item">Earn Justcash</Link>
                     <button onClick={() => props.logout()} className="nav__item">Sign out</button>
                     <button className="nav__host">Start hosting</button>
                 </nav>

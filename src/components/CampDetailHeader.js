@@ -1,28 +1,61 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-import { store } from "../index";
+import { fetchCamps } from "../actions/campActions";
 import { connect } from "react-redux";
+import GoogleApiWrapper from "./MapContainer";
 
 const CampDetailHeader = props => {
-    console.log(props);
-    // let campDetailObj;
+    useEffect(() => {
+        (async () => {
+            await props.fetchCamps();
+        })();
+    }, []);
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, []);
+
+
     const campId = parseInt(props.match.params.campId, 10);
-    // console.log(campId);
-
-    // let campDetailObj;
-    // useEffect(() => {
-    // (async () => {
     const campDetailObj = props.campsList[campId];
-    // console.log(campDetailObj);
-    // })();
-    // });
-    // console.log(props.campsList);
-    // console.log(campDetailObj);
-    // console.log(campDetailObj);
-    // console.log(store.getState());
 
-    const tentIconUrl = "../assets/camp_icons/tent.png";
-    // console.log(props.campsList[campId].campfire);
+    const [checkInDate, setCheckInDate] = useState(new Date());
+    const [checkOutDate, setCheckOutDate] = useState(new Date());
+    const [guestNumber, setGuestNumber] = useState(0);
+    const [subtotal, setSubtotal] = useState(0);
+
+
+    const handleCheckinDate = event => {
+        setCheckInDate(event.target.value);
+    }
+
+    let days;
+    const handleCheckoutDate = event => {
+        setCheckOutDate(event.target.value);
+        const days = daysBetween(new Date(checkInDate), new Date(checkOutDate));
+        setSubtotal(parseInt(campDetailObj.price, 10) * parseInt(days, 10));
+    }
+
+    const handleGuestInput = event => {
+        setGuestNumber(event.target.value);
+    }
+
+    const daysBetween = (startDate, endDate) => {
+        const oneDay = 1000 * 60 * 60 * 24;
+
+        const start = Date.UTC(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
+        const end = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
+
+        return (start - end) / oneDay;
+    }
+
+    // useEffect(() => {
+    //     setSubtotal((campDetailObj.price) * days);
+    // }, [])
+
+    if (Object.keys(props.campsList).length < 1) {
+        return null;
+    }
 
     const campfireText = props.campsList[campId].campfire ? "Campfires allowed" : "No campfire";
     const toiletText = props.campsList[campId].toilet ? "Toilet availabe" : "No toilet";
@@ -34,42 +67,52 @@ const CampDetailHeader = props => {
     const binText = props.campsList[campId].trash ? "Bins available" : "No bins";
     const wifiText = props.campsList[campId].wifi ? "Wifi available" : "No wifi";
 
+    const checkBiking = props.campsList[campId].biking ? <div className="camp-activities__icon"><img src={require("../assets/camp_icons/biking.png")} alt="activities-icon" /><div className="camp-activities__icon-text">Biking</div></div> : null;
+    const checkClimbing = props.campsList[campId].climbing ? <div className="camp-activities__icon"><img src={require("../assets/camp_icons/climbing.png")} alt="activities-icon" /><div className="camp-activities__icon-text">Climbing</div></div> : null;
+    const checkFishing = props.campsList[campId].fishing ? <div className="camp-activities__icon"><img src={require("../assets/camp_icons/fishing.png")} alt="activities-icon" /><div className="camp-activities__icon-text">Fishing</div></div> : null;
+    const checkHiking = props.campsList[campId].hiking ? <div className="camp-activities__icon"><img src={require("../assets/camp_icons/hiking.png")} alt="activities-icon" /><div className="camp-activities__icon-text">Hiking</div></div> : null;
+    const checkOffRoading = props.campsList[campId].offRoading ? <div className="camp-activities__icon"><img src={require("../assets/camp_icons/offroading.png")} alt="activities-icon" /><div className="camp-activities__icon-text">Off-roading</div></div> : null;
+    const checkSwimming = props.campsList[campId].swimming ? <div className="camp-activities__icon"><img src={require("../assets/camp_icons/swimming.png")} alt="activities-icon" /><div className="camp-activities__icon-text">Swimming</div></div> : null;
+    const checkWildlife = props.campsList[campId].wildlife ? <div className="camp-activities__icon"><img src={require("../assets/camp_icons/wildlife.png")} alt="activities-icon" /><div className="camp-activities__icon-text">Wildlife watching</div></div> : null;
 
     return (
         <>
-            <div className="booking__form-container">
-                <form className="booking__form">
-                    <div className="booking__form-price">${campDetailObj.price}</div>
-                    <div className="booking__pernight">per night</div>
-                    <div className="booking__logistics">
-                        <div className="booking__form-checkin">Check in
-                            <input className="booking__form-checkin-input" type="date" placeholder="Select date" />
+            <div className="invisible"></div>
+            <div className="form-invisible">
+                <div className="booking__form-container">
+                    <form className="booking__form">
+                        <div className="booking__form-price">${campDetailObj.price}</div>
+                        <div className="booking__pernight">per night</div>
+                        <div className="booking__logistics">
+                            <div className="booking__form-checkin">Check in
+                                <input className="booking__form-checkin-input" type="date" onChange={handleCheckinDate} placeholder="Select date" />
+                            </div>
+                            <div className="booking__form-checkout">Check out
+                                <input className="booking__form-checkout-input" type="date" onChange={handleCheckoutDate} placeholder="Select date" />
+                            </div>
+                            <div className="booking__form-guest">Guests
+                                <input className="booking__form-guest-input" type="number" onChange={handleGuestInput} placeholder="0" />
+                            </div>
                         </div>
-                        <div className="booking__form-checkout">Check out
-                            <input className="booking__form-checkout-input" type="date" placeholder="Select date" />
+                        <div className="booking__form-subtotal-container">
+                            <div className="booking__form-subtotal">Subtotal</div>
+                            <div className="booking__form-subtotal-value">${subtotal}</div>
                         </div>
-                        <div className="booking__form-guest">Guests
-                            <input className="booking__form-guest-input" type="number" placeholder="0" />
-                        </div>
-                    </div>
-                    <div className="booking__form-subtotal-container">
-                        <div className="booking__form-subtotal">Subtotal</div>
-                        <div className="booking__form-subtotal-value">$70</div>
-                    </div>
-                    <button type="submit" className="booking__form-button">Instant book</button>
-                </form>
+                        <button type="submit" className="booking__form-button">Instant book</button>
+                    </form>
+                </div>
             </div>
             <div className="camp-header__container">
                 <div className="previous">❮</div>
                 <div className="camp-header__image-container">
-                    <img className="camp-header__image" src={require("../assets/1.jpg")} />
-                    <img className="camp-header__image" src={require("../assets/2.jpg")} />
-                    <img className="camp-header__image" src={require("../assets/3.jpg")} />
+                    <img className="camp-header__image" src={require("../assets/1.jpg")} alt="camp-pic" />
+                    <img className="camp-header__image" src={require("../assets/2.jpg")} alt="camp-pic" />
+                    <img className="camp-header__image" src={require("../assets/3.jpg")} alt="camp-pic" />
                 </div>
                 <div className="next">❯</div>
                 <div className="camp-header__header">{campDetailObj.campName}</div>
                 <div className="camp-header__host-details">
-                    <img className="camp-header__host-image" src={require("../assets/app_logos/logoblack.svg")} />
+                    <img className="camp-header__host-image" src={require("../assets/app_logos/logoblack.svg")} alt="host-pic" />
                     <div className="camp-header__hostedby">Hosted by</div>
                     <div className="camp-header__host-name">{campDetailObj.host}</div>
                     <p className="camp-header__details-summary">{campDetailObj.campDescription}</p>
@@ -79,69 +122,75 @@ const CampDetailHeader = props => {
                 <div className="camparea__container">
                     <div className="camparea__header">Campsite area
                         <div className="camparea__type-container">
-                            <img className="camparea__icon" src={require("../assets/camp_icons/tent.png")} />
+                            <img className="camparea__icon" src={require("../assets/camp_icons/tent.png")} alt="camparea-icon" />
                             <div className="camparea__type">{campDetailObj.campType}</div>
                         </div>
                         <div className="camparea__type-container">
-                            <img className="camparea__icon" src={require("../assets/camp_icons/numsites.png")} />
+                            <img className="camparea__icon" src={require("../assets/camp_icons/numsites.png")} alt="camparea-icon" />
                             <div className="camparea__type">{campDetailObj.numSites}</div>
                         </div>
                         <div className="camparea__type-container">
-                            <img className="camparea__icon" src={require("../assets/camp_icons/maxcapacity.png")} />
+                            <img className="camparea__icon" src={require("../assets/camp_icons/maxcapacity.png")} alt="camparea-icon" />
                             <div className="camparea__type">Up to {campDetailObj.maxCapacity} guests per site</div>
                         </div>
                     </div>
                     <div className="camparea__header">Essentials
                         <div className="camparea__type-container">
-                            <img className="camparea__icon" src={require("../assets/camp_icons/campfire.png")} />
+                            <img className="camparea__icon" src={require("../assets/camp_icons/campfire.png")} alt="camparea-icon" />
                             <div className="camparea__type">{campfireText}</div>
                         </div>
                         <div className="camparea__type-container">
-                            <img className="camparea__icon" src={require("../assets/camp_icons/toilet.png")} />
+                            <img className="camparea__icon" src={require("../assets/camp_icons/toilet.png")} alt="camparea-icon" />
                             <div className="camparea__type">{toiletText}</div>
                         </div>
                         <div className="camparea__type-container">
-                            <img className="camparea__icon" src={require("../assets/camp_icons/pet.png")} />
+                            <img className="camparea__icon" src={require("../assets/camp_icons/pet.png")} alt="camparea-icon" />
                             <div className="camparea__type">{petText}</div>
                         </div>
                     </div>
                     <div className="camparea__header">Amenities
                         <div className="camparea__type-container">
-                            <img className="camparea__icon" src={require("../assets/camp_icons/water.png")} />
+                            <img className="camparea__icon" src={require("../assets/camp_icons/water.png")} alt="camparea-icon" />
                             <div className="camparea__type">{waterText}</div>
                         </div>
                         <div className="camparea__type-container">
-                            <img className="camparea__icon" src={require("../assets/camp_icons/kitchen.png")} />
+                            <img className="camparea__icon" src={require("../assets/camp_icons/kitchen.png")} alt="camparea-icon" />
                             <div className="camparea__type">{kitchentext}</div>
                         </div>
                         <div className="camparea__type-container">
-                            <img className="camparea__icon" src={require("../assets/camp_icons/picnic.png")} />
+                            <img className="camparea__icon" src={require("../assets/camp_icons/picnic.png")} alt="camparea-icon" />
                             <div className="camparea__type">{picnicText}</div>
                         </div>
                         <div className="camparea__type-container">
-                            <img className="camparea__icon" src={require("../assets/camp_icons/shower.png")} />
+                            <img className="camparea__icon" src={require("../assets/camp_icons/shower.png")} alt="camparea-icon" />
                             <div className="camparea__type">{showerText}</div>
                         </div>
                         <div className="camparea__type-container">
-                            <img className="camparea__icon" src={require("../assets/camp_icons/bin.png")} />
+                            <img className="camparea__icon" src={require("../assets/camp_icons/bin.png")} alt="camparea-icon" />
                             <div className="camparea__type">{binText}</div>
                         </div>
                         <div className="camparea__type-container">
-                            <img className="camparea__icon" src={require("../assets/camp_icons/wifi.png")} />
+                            <img className="camparea__icon" src={require("../assets/camp_icons/wifi.png")} alt="camparea-icon" />
                             <div className="camparea__type">{wifiText}</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="camp-activities__container">
-                <div className="camp-activities__container">
-                    <div className="camp-activities__header">Activities</div>
-                    <div className="camp-activities__text">Offered on the Host's property or nearby.</div>
-                    <div className="camp-activities__icon-container">
-                        <div className="camp-activities__icon"></div>
-                        <div className="camp-activities__icon-text"></div>
-                    </div>
+                <div className="camp-activities__header">Activities</div>
+                <div className="camp-activities__text">Offered on the Host's property or nearby.</div>
+                <div className="camp-activities__icon-container">
+                    {checkBiking}
+                    {checkClimbing}
+                    {checkFishing}
+                    {checkHiking}
+                    {checkOffRoading}
+                    {checkSwimming}
+                    {checkWildlife}
                 </div>
+            </div>
+            <div className="map-container">
+                <GoogleApiWrapper lat={campDetailObj.latitude} lng={campDetailObj.longitude} />
             </div>
         </>
     )
@@ -150,12 +199,18 @@ const CampDetailHeader = props => {
 const mapStateToProps = (state) => {
     return {
         campsList: state.camps
-    }
-}
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        fetchCamps: () => dispatch(fetchCamps()),
+    };
+};
 
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(
     CampDetailHeader
 );

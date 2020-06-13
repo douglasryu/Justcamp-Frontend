@@ -20,6 +20,10 @@ const App = props => {
         })();
     });
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <BrowserRouter>
             <Modal />
@@ -35,8 +39,8 @@ const mapDispatchToProps = dispatch => {
     return {
         loadToken: () => dispatch(loadToken()),
         fetchCamps: () => dispatch(fetchCamps()),
-    }
-}
+    };
+};
 
 export default connect(
     null,
