@@ -15,25 +15,20 @@ const CampDetailHeader = props => {
         window.scrollTo(0, 0)
     }, []);
 
-
     const campId = parseInt(props.match.params.campId, 10);
     const campDetailObj = props.campsList[campId];
 
     const [checkInDate, setCheckInDate] = useState(new Date());
     const [checkOutDate, setCheckOutDate] = useState(new Date());
     const [guestNumber, setGuestNumber] = useState(0);
-    const [subtotal, setSubtotal] = useState(0);
-
 
     const handleCheckinDate = event => {
         setCheckInDate(event.target.value);
     }
 
-    let days;
+    // let days;
     const handleCheckoutDate = event => {
         setCheckOutDate(event.target.value);
-        const days = daysBetween(new Date(checkInDate), new Date(checkOutDate));
-        setSubtotal(parseInt(campDetailObj.price, 10) * parseInt(days, 10));
     }
 
     const handleGuestInput = event => {
@@ -42,12 +37,14 @@ const CampDetailHeader = props => {
 
     const daysBetween = (startDate, endDate) => {
         const oneDay = 1000 * 60 * 60 * 24;
-
         const start = Date.UTC(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
         const end = Date.UTC(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
-
         return (start - end) / oneDay;
     }
+
+    // setInterval(() => {
+    //     setSubtotal(daysBetween(new Date(checkInDate), new Date(checkOutDate)) * campDetailObj.price)
+    // }, 2000);
 
     // useEffect(() => {
     //     setSubtotal((campDetailObj.price) * days);
@@ -96,7 +93,7 @@ const CampDetailHeader = props => {
                         </div>
                         <div className="booking__form-subtotal-container">
                             <div className="booking__form-subtotal">Subtotal</div>
-                            <div className="booking__form-subtotal-value">${subtotal}</div>
+                            <div className="booking__form-subtotal-value">${daysBetween(new Date(checkInDate), new Date(checkOutDate)) * campDetailObj.price >= 0 ? daysBetween(new Date(checkInDate), new Date(checkOutDate)) * campDetailObj.price : 0}</div>
                         </div>
                         <button type="submit" className="booking__form-button">Instant book</button>
                     </form>
