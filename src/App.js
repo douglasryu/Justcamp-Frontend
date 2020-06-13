@@ -6,11 +6,14 @@ import Navigation from "./components/Navigation";
 
 import { loadToken } from "./actions/sessionActions";
 import { fetchCamps } from "./actions/campActions";
+import { fetchReservation } from "./actions/tripActions";
 import { BrowserRouter, Route } from "react-router-dom";
 import CampDetailPage from "./components/CampDetailPage";
 import ProfilePage from "./components/ProfilePage";
 
 const App = props => {
+    const userId = props.userId || window.localStorage.getItem("USER_ID");
+
     useEffect(() => {
         props.loadToken();
     });
@@ -18,6 +21,12 @@ const App = props => {
     useEffect(() => {
         (async () => {
             await props.fetchCamps();
+        })();
+    });
+
+    useEffect(() => {
+        (async () => {
+            await props.fetchReservation(userId);
         })();
     });
 
@@ -36,16 +45,22 @@ const App = props => {
     );
 };
 
+const mapStateToProps = state => {
+    return {
+        userId: state.session.id
+    };
+};
 
 const mapDispatchToProps = dispatch => {
     return {
         loadToken: () => dispatch(loadToken()),
         fetchCamps: () => dispatch(fetchCamps()),
+        fetchReservation: (userId) => dispatch(fetchReservation(userId)),
     };
 };
 
 export default connect(
-    null,
+    mapStateToProps,
     mapDispatchToProps
 )(
     App

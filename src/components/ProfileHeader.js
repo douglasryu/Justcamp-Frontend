@@ -1,9 +1,16 @@
 import React, { useEffect } from "react";
+import { NavLink, Switch } from "react-router-dom";
+import { connect } from "react-redux";
 
-const ProfileHeader = () => {
+import ProfileTrips from "./ProfileTrips";
+import ProfileReviews from "./ProfileReviews";
+
+const ProfileHeader = props => {
     // useEffect(() => {
     //     window.scrollTo(0, 0)
     // }, []);
+
+    const tripsArray = (Object.values(props.reservations));
 
     return (
         <>
@@ -30,19 +37,41 @@ const ProfileHeader = () => {
                 <div className="profile__tripreview-container">
                     <div className="profile__trip">
                         <div className="profile__trip-num">7</div>
-                        <div className="profile__trip-text">Trips</div>
+                        <NavLink to="/profile/trips" className="profile__trip-text">Trips</NavLink>
                     </div>
                     <div className="profile__review">
                         <div className="profile__review-num">2</div>
-                        <div className="profile__review-text">Reviews</div>
+                        <NavLink to="/profile/reviews" className="profile__review-text">Reviews</NavLink>
                     </div>
                 </div>
-                <div className="profile__item-container">
-
+                <div className="profile__tripreview-item-container">
+                    <Switch>
+                        <ProfileReviews exact path="/profile/reviews" />
+                        <ProfileTrips path="/profile/" />
+                    </Switch>
                 </div>
             </div>
         </>
     )
 }
 
-export default ProfileHeader;
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         fetchReservation: (user_id) => dispatch(fetchReservation(user_id)),
+//     };
+// };
+
+const mapStateToProps = state => {
+    return {
+        reservations: state.trips
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    null
+)(
+    ProfileHeader
+);
+
+// export default ProfileHeader;

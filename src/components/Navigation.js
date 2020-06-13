@@ -28,7 +28,7 @@ const Navigation = props => {
                 <nav className="nav-container">
                     <Link to="/" className="nav__logo">JUSTC<img src={require("../assets/app_logos/logoblack.svg")} alt="logo" className="nav__icon" />MP</Link>
                     <button className="nav__item">Near me</button>
-                    <Link to="/trips" className="nav__item">Trips</Link>
+                    <Link to="/profile" className="nav__item">Trips</Link>
                     <button onClick={() => props.logout()} className="nav__item">Sign out</button>
                     <button className="nav__host">Start hosting</button>
                 </nav>

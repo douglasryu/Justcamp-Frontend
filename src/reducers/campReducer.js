@@ -8,7 +8,7 @@ const campReducer = (state = {}, action) => {
     switch (action.type) {
         case LOAD_CAMPS:
             let newState = {};
-            action.list.campSites.forEach(camp => newState[camp.id] = camp)
+            action.list.campSites.forEach(camp => newState[camp.id] = camp);
             return Object.assign(nextState, newState);
         default:
             return state;
