@@ -69,6 +69,22 @@ const CampDetailHeader = props => {
         return (start - end) / oneDay;
     }
 
+    const secondImage = (campId) => {
+        if (campId + 4 <= 15) {
+            return (campId + 4);
+        } else {
+            return (campId - 4);
+        }
+    }
+
+    const thirdImage = (campId) => {
+        if (campId + 5 <= 15) {
+            return (campId + 5);
+        } else {
+            return (campId - 5);
+        }
+    }
+
     if (Object.keys(props.campsList).length < 1) {
         return null;
     }
@@ -122,9 +138,9 @@ const CampDetailHeader = props => {
             <div className="camp-header__container">
                 <div className="previous">❮</div>
                 <div className="camp-header__image-container">
-                    <img className="camp-header__image" src={require("../assets/1.jpg")} alt="camp-pic" />
-                    <img className="camp-header__image" src={require("../assets/2.jpg")} alt="camp-pic" />
-                    <img className="camp-header__image" src={require("../assets/3.jpg")} alt="camp-pic" />
+                    <img className="camp-header__image" src={require(`../assets/${campId}.jpg`)} alt="camp-pic" />
+                    <img className="camp-header__image" src={require(`../assets/${secondImage(campId)}.jpg`)} alt="camp-pic" />
+                    <img className="camp-header__image" src={require(`../assets/${thirdImage(campId)}.jpg`)} alt="camp-pic" />
                 </div>
                 <div className="next">❯</div>
                 <div className="camp-header__header">{campDetailObj.campName}</div>

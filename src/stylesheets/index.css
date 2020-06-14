@@ -53,6 +53,10 @@ body {
     border-bottom: 1.5px solid #40d9ac;
 }
 
+.nav__near {
+    cursor: not-allowed;
+}
+
 .nav__host {
     font-size: 15px;
     margin-right: 20px;
@@ -71,6 +75,7 @@ body {
 .nav__host:hover {
     background-color: #fdfdfd;
     color: #40d9ac;
+    cursor: not-allowed;
 }
 
 /* Modal css */
@@ -678,7 +683,8 @@ input[type=number]::-webkit-inner-spin-button {
 /* About css */
 .about__container {
     position: relative;
-    top: 300px;
+    top: 250px;
+    padding-top: 50px;
     border-top: 1px solid #ebebeb;
     display: flex;
     flex-direction: column;
@@ -706,7 +712,8 @@ input[type=number]::-webkit-inner-spin-button {
 /* Press css */
 .press__container {
     position: relative;
-    top: 400px;
+    top: 350px;
+    padding-top: 70px;
     display: flex;
     flex-direction: column;
     border-top: 1px solid #ebebeb;
@@ -732,7 +739,7 @@ input[type=number]::-webkit-inner-spin-button {
 /* Footer css */
 .footer__border {
     position: relative;
-    top: 500px;
+    top: 470px;
     border-top: 1px solid #ebebeb;
 
 }
@@ -1042,10 +1049,13 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 /* Profile/reviews page css */
+.profilereview__page {
+    margin-bottom: 210px;
+}
+
 .profilereview__container {
     border-bottom: 1px solid #ebebeb;
     width: 700px;
-    height: auto;
     padding: 20px 0px;
 }
 

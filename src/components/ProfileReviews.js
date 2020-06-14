@@ -6,7 +6,7 @@ const ProfileReviews = props => {
     const reviewsArray = (Object.values(props.reviews));
 
     return (
-        <>
+        <div className="profilereview__page">
             {reviewsArray.reverse().map(review => {
                 return (
                     <div key={review.id} className="profilereview__container">
@@ -20,7 +20,7 @@ const ProfileReviews = props => {
 
                 )
             })}
-        </>
+        </div>
     )
 }
 
