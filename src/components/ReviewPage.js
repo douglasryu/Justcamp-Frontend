@@ -26,19 +26,9 @@ const mapStateToProps = state => {
     };
 };
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         fetchReservation: (userId) => dispatch(fetchReservation(userId)),
-//         fetchReview: (userId) => dispatch(fetchReview(userId)),
-//     };
-// };
-
 export default connect(
     mapStateToProps,
     null
 )(
     ReviewPage
 );
-
-
-// export default ProfilePage;

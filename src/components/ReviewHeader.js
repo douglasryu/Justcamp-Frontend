@@ -36,12 +36,6 @@ const ReviewHeader = props => {
     )
 }
 
-// const mapStateToProps = state => {
-//     return {
-//         campsList: state.camps
-//     };
-// };
-
 const mapDispatchToProps = dispatch => {
     return {
         createReview: (user_id, campsite_id, title, body) => dispatch(createReview(user_id, campsite_id, title, body)),
@@ -54,5 +48,3 @@ export default connect(
 )(
     ReviewHeader
 );
-
-// export default ReviewHeader;

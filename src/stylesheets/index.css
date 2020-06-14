@@ -291,7 +291,6 @@ body {
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    /* justify-content: space-around; */
     justify-items: center;
 }
 
@@ -868,7 +867,6 @@ input[type=number]::-webkit-inner-spin-button {
     width: 280px;
     height: auto;
     border: 1px solid #EBEBEB;
-    /* border: 1px solid black; */
 }
 
 .profile__userinfo-picname {
@@ -981,7 +979,6 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 .profile__trip {
-    /* border: 1px solid black; */
     font-size: 17px;
     font-weight: 700;
 }
@@ -1049,14 +1046,12 @@ input[type=number]::-webkit-inner-spin-button {
 .profiletrip__text {
     display: flex;
     flex-direction: column;
-    /* height: 500px; */
     justify-content: center;
 }
 
 .profiletrip__item {
     font-size: 14px;
     font-weight: 600;
-    /* margin-left: 30px; */
     margin: 10px 0px 10px 30px;
 }
 
@@ -1106,7 +1101,6 @@ input[type=number]::-webkit-inner-spin-button {
 .reviewpage-container {
     width: 100%;
     margin: 150px 30% -64px 30%;
-    /* overflow-x: hidden; */
 }
 
 .reviewpage-form {
@@ -1119,7 +1113,6 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 18px;
     font-weight: 700;
     margin-bottom: 20px;
-    /* overflow-x: hidden; */
 }
 
 .reviewpage-form-title {
@@ -1156,9 +1149,7 @@ input[type=number]::-webkit-inner-spin-button {
 }
 
 
-
-
-/* Main Page Media Query */
+/* Media Query css */
 @media screen and (max-width: 1920px) {
     .camp-header__header {
         position: relative;

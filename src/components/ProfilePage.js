@@ -52,6 +52,3 @@ export default connect(
 )(
     ProfilePage
 );
-
-
-// export default ProfilePage;

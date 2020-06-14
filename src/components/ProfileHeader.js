@@ -70,5 +70,3 @@ export default connect(
 )(
     ProfileHeader
 );
-
-// export default ProfileHeader;

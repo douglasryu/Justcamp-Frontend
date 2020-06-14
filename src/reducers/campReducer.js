@@ -1,7 +1,7 @@
 import { LOAD_CAMPS } from "../actions/campActions";
 
 const campReducer = (state = {}, action) => {
-    // Object.freeze(state);
+    Object.freeze(state);
 
     let nextState = Object.assign({}, state);
 
