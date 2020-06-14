@@ -55,12 +55,6 @@ const ProfileHeader = props => {
     )
 }
 
-// const mapDispatchToProps = dispatch => {
-//     return {
-//         fetchReservation: (user_id) => dispatch(fetchReservation(user_id)),
-//     };
-// };
-
 const mapStateToProps = state => {
     return {
         trips: state.trips,

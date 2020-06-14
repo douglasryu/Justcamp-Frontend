@@ -69,19 +69,21 @@ const CampDetailHeader = props => {
         return (start - end) / oneDay;
     }
 
-    const secondImage = (campId) => {
-        if (campId + 4 <= 15) {
-            return (campId + 4);
+    const imageId = campId;
+
+    const secondImage = (imageId) => {
+        if (imageId + 4 <= 15) {
+            return (imageId + 4);
         } else {
-            return (campId - 4);
+            return (imageId - 4);
         }
     }
 
-    const thirdImage = (campId) => {
-        if (campId + 5 <= 15) {
-            return (campId + 5);
+    const thirdImage = (imageId) => {
+        if (imageId + 5 <= 15) {
+            return (imageId + 5);
         } else {
-            return (campId - 5);
+            return (imageId - 5);
         }
     }
 
@@ -136,13 +138,13 @@ const CampDetailHeader = props => {
                 </div>
             </div>
             <div className="camp-header__container">
-                <div className="previous">❮</div>
+                <button className="previous">❮</button>
                 <div className="camp-header__image-container">
-                    <img className="camp-header__image" src={require(`../assets/${campId}.jpg`)} alt="camp-pic" />
-                    <img className="camp-header__image" src={require(`../assets/${secondImage(campId)}.jpg`)} alt="camp-pic" />
-                    <img className="camp-header__image" src={require(`../assets/${thirdImage(campId)}.jpg`)} alt="camp-pic" />
+                    <img className="camp-header__image1" src={require(`../assets/${imageId}.jpg`)} alt="camp-pic" />
+                    <img className="camp-header__image2" src={require(`../assets/${secondImage(imageId)}.jpg`)} alt="camp-pic" />
+                    <img className="camp-header__image3" src={require(`../assets/${thirdImage(imageId)}.jpg`)} alt="camp-pic" />
                 </div>
-                <div className="next">❯</div>
+                <button className="next">❯</button>
                 <div className="camp-header__header">{campDetailObj.campName}</div>
                 <div className="camp-header__host-details">
                     <img className="camp-header__host-image" src={require("../assets/app_logos/logoblack.svg")} alt="host-pic" />
@@ -167,7 +169,7 @@ const CampDetailHeader = props => {
                             <div className="camparea__type">Up to {campDetailObj.maxCapacity} guests per site</div>
                         </div>
                     </div>
-                    <div className="camparea__header">Essentials
+                    <div className="camparea__header essentials">Essentials
                         <div className="camparea__type-container">
                             <img className="camparea__icon" src={require("../assets/camp_icons/campfire.png")} alt="camparea-icon" />
                             <div className="camparea__type">{campfireText}</div>
@@ -181,7 +183,7 @@ const CampDetailHeader = props => {
                             <div className="camparea__type">{petText}</div>
                         </div>
                     </div>
-                    <div className="camparea__header">Amenities
+                    <div className="camparea__header amenities">Amenities
                         <div className="camparea__type-container">
                             <img className="camparea__icon" src={require("../assets/camp_icons/water.png")} alt="camparea-icon" />
                             <div className="camparea__type">{waterText}</div>
