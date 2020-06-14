@@ -57,6 +57,11 @@ const CampDetailHeader = props => {
         props.openModal("login");
     }
 
+    const handleReviewButton = event => {
+        event.preventDefault();
+        props.history.push(`/reviews/${campId}`);
+    }
+
     const daysBetween = (startDate, endDate) => {
         const oneDay = 1000 * 60 * 60 * 24;
         const start = Date.UTC(endDate.getFullYear(), endDate.getMonth(), endDate.getDate());
@@ -110,6 +115,7 @@ const CampDetailHeader = props => {
                             <div className="booking__form-subtotal-value">${daysBetween(new Date(checkInDate), new Date(checkOutDate)) * campDetailObj.price >= 0 ? daysBetween(new Date(checkInDate), new Date(checkOutDate)) * campDetailObj.price : 0}</div>
                         </div>
                         {isLoggedIn ? <button type="submit" onClick={handleSubmit} className="booking__form-button">Instant book</button> : <button onClick={handleSignIn} className="booking__form-button-signin">Sign in</button>}
+                        {isLoggedIn ? <button onClick={handleReviewButton} className="booking__form-button-review">Write a Review</button> : null}
                     </form>
                 </div>
             </div>

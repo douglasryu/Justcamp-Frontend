@@ -13,18 +13,3 @@ export const fetchCamps = () => async (dispatch) => {
         dispatch(loadCamps(list));
     }
 }
-
-// export const fetchCamp = (campId) => async (dispatch) => {
-//     const token = window.localStorage.getItem("justcamp/authentication/token");
-//     const options = {
-//         headers: {
-//             Authorization: `Bearer ${token}`,
-//         }
-//     };
-//     const response = await fetch(`${baseUrl}/camps/${campId}`, options);
-
-//     if (response.ok) {
-//         const camp = await response.json();
-//         dispatch(loadCamp(camp));
-//     }
-// }

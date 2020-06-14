@@ -6,19 +6,19 @@ import ProfileTrips from "./ProfileTrips";
 import ProfileReviews from "./ProfileReviews";
 
 const ProfileHeader = props => {
-    // useEffect(() => {
-    //     window.scrollTo(0, 0)
-    // }, []);
-
-    const tripsArray = (Object.values(props.reservations));
+    const tripsArray = (Object.values(props.trips));
+    const reviewsArray = (Object.values(props.reviews));
+    const firstName = String(props.firstName);
+    const lastName = String(props.lastName);
+    const displayName = firstName === "demo" ? "Guest" : firstName === "null" ? "" : `${firstName} ${lastName[0]}.`;
 
     return (
-        <>
+        <div className="profile__page">
             <div className="profile__left">
                 <div className="profile__userinfo-container">
                     <div className="profile__userinfo-picname">
                         <img className="profile__pic" src={require("../assets/app_logos/logoblack.svg")} alt="profile-logo" />
-                        <div className="profile__name">Douglas R.</div>
+                        <div className="profile__name">{displayName}</div>
                     </div>
                     <div className="profile__userinfo-since"><span role="img" aria-label="love">❤️</span> Justcamper since 2020</div>
                     <div className="profile__userinfo-from"><img className="profile__userinfo-from-icon" src={require("../assets/camp_icons/from.png")} alt="profile-from" /> Where are you from?</div>
@@ -36,11 +36,11 @@ const ProfileHeader = props => {
             <div className="profile__right">
                 <div className="profile__tripreview-container">
                     <div className="profile__trip">
-                        <div className="profile__trip-num">7</div>
+                        <div className="profile__trip-num">{tripsArray.length}</div>
                         <NavLink to="/profile/trips" className="profile__trip-text">Trips</NavLink>
                     </div>
                     <div className="profile__review">
-                        <div className="profile__review-num">2</div>
+                        <div className="profile__review-num">{reviewsArray.length}</div>
                         <NavLink to="/profile/reviews" className="profile__review-text">Reviews</NavLink>
                     </div>
                 </div>
@@ -51,7 +51,7 @@ const ProfileHeader = props => {
                     </Switch>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 
@@ -63,7 +63,10 @@ const ProfileHeader = props => {
 
 const mapStateToProps = state => {
     return {
-        reservations: state.trips
+        trips: state.trips,
+        reviews: state.reviews,
+        firstName: state.session.firstName,
+        lastName: state.session.lastName
     };
 };
 

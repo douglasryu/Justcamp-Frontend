@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import Mainpage from "./components/Mainpage";
 import Modal from "./components/Modal";
 import Navigation from "./components/Navigation";
+import Mainpage from "./components/Mainpage";
+import CampDetailPage from "./components/CampDetailPage";
+import ProfilePage from "./components/ProfilePage";
+import ReviewPage from "./components/ReviewPage";
 
 import { loadToken } from "./actions/sessionActions";
 import { fetchCamps } from "./actions/campActions";
-import { fetchReservation } from "./actions/tripActions";
 import { BrowserRouter, Route } from "react-router-dom";
-import CampDetailPage from "./components/CampDetailPage";
-import ProfilePage from "./components/ProfilePage";
 
 const App = props => {
     const userId = props.userId || window.localStorage.getItem("USER_ID");
@@ -25,12 +25,6 @@ const App = props => {
     });
 
     useEffect(() => {
-        (async () => {
-            await props.fetchReservation(userId);
-        })();
-    });
-
-    useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
 
@@ -41,6 +35,7 @@ const App = props => {
             <Route exact path="/" component={Mainpage} />
             <Route path="/camps/:campId" component={CampDetailPage} />
             <Route path="/profile" component={ProfilePage} />
+            <Route path="/reviews/:campId" component={ReviewPage} />
         </BrowserRouter>
     );
 };
@@ -55,7 +50,6 @@ const mapDispatchToProps = dispatch => {
     return {
         loadToken: () => dispatch(loadToken()),
         fetchCamps: () => dispatch(fetchCamps()),
-        fetchReservation: (userId) => dispatch(fetchReservation(userId)),
     };
 };
 

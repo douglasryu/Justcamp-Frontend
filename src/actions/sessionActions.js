@@ -11,9 +11,11 @@ const setToken = (payload) => {
 
 export const loadToken = () => dispatch => {
     const token = window.localStorage.getItem(TOKEN_KEY);
-    const user = window.localStorage.getItem("USER_ID");
+    const user = window.localStorage.getItem("justcamp/authentication/USER_ID");
+    const firstName = window.localStorage.getItem("justcamp/authentication/firstName");
+    const lastName = window.localStorage.getItem("justcamp/authentication/lastName");
     if (token) {
-        dispatch(setToken({ token, user }));
+        dispatch(setToken({ token, user, firstName, lastName }));
     }
 };
 
@@ -25,9 +27,12 @@ export const createUser = (firstName, lastName, email, password, zipcode) => asy
     });
 
     if (response.ok) {
-        const { token, user } = await response.json();
-        window.localStorage.setItem(TOKEN_KEY, token);
-        dispatch(setToken(token, user));
+        const payload = await response.json();
+        window.localStorage.setItem(TOKEN_KEY, payload.token);
+        window.localStorage.setItem("justcamp/authentication/USER_ID", payload.user);
+        window.localStorage.setItem("justcamp/authentication/firstName", payload.firstName);
+        window.localStorage.setItem("justcamp/authentication/lastName", payload.lastName);
+        dispatch(setToken(payload));
     }
 }
 
@@ -41,13 +46,18 @@ export const login = (email, password) => async dispatch => {
     if (response.ok) {
         const payload = await response.json();
         window.localStorage.setItem(TOKEN_KEY, payload.token);
-        window.localStorage.setItem("USER_ID", payload.user);
+        window.localStorage.setItem("justcamp/authentication/USER_ID", payload.user);
+        window.localStorage.setItem("justcamp/authentication/firstName", payload.firstName);
+        window.localStorage.setItem("justcamp/authentication/lastName", payload.lastName);
         dispatch(setToken(payload));
     }
 };
 
-export const logout = () => (dispatch, getState) => {
+export const logout = () => (dispatch) => {
     window.localStorage.removeItem(TOKEN_KEY);
-    window.localStorage.removeItem("USER_ID");
+    window.localStorage.removeItem("justcamp/authentication/USER_ID");
+    window.localStorage.removeItem("justcamp/authentication/firstName");
+    window.localStorage.removeItem("justcamp/authentication/lastName");
     dispatch(removeToken());
+    window.location.href = "/";
 };

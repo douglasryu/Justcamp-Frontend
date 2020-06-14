@@ -5,6 +5,7 @@ body {
     font-family: "Calibre", Helvetica, Arial, sans-serif;
     font-size: 12px;
     color: #333333;
+    overflow-x: hidden;
     /* display: flex; */
     /* justify-content: space-around; */
 }
@@ -583,6 +584,17 @@ input[type=number]::-webkit-inner-spin-button {
     font-weight: 700;
 }
 
+.booking__form-button-review {
+    display: block;
+    padding: 20px 87px;
+    margin: 10px auto;
+    background-color: #40d9ac;
+    border-radius: 2px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 700;
+}
+
 .camp-information__container {
     position: relative;
     top: -1000px;
@@ -816,6 +828,11 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 /* Profile Page css */
+.profile__page {
+    margin-bottom: -328px;
+    overflow-x: hidden;
+}
+
 .profile__userinfo-container {
     position: relative;
     top: 130px;
@@ -825,8 +842,8 @@ input[type=number]::-webkit-inner-spin-button {
 .profile__userinfo-container {
     width: 280px;
     height: auto;
-    /* border: 1px solid #EBEBEB; */
-    border: 1px solid black;
+    border: 1px solid #EBEBEB;
+    /* border: 1px solid black; */
 }
 
 .profile__userinfo-picname {
@@ -883,8 +900,8 @@ input[type=number]::-webkit-inner-spin-button {
     left: 15%;
     width: 280px;
     height: auto;
-    /* border: 1px solid #EBEBEB; */
-    border: 1px solid black;
+    border: 1px solid #EBEBEB;
+    /* border: 1px solid black; */
 }
 
 .profile__trusted-header {
@@ -925,6 +942,7 @@ input[type=number]::-webkit-inner-spin-button {
     color: #ffffff;
     padding: 5px 7px;
     border-radius: 2px;
+    cursor: pointer;
 }
 
 .profile__right {
@@ -946,10 +964,12 @@ input[type=number]::-webkit-inner-spin-button {
 
 .profile__trip-num {
     font-size: 19px;
+    margin-bottom: 5px;
 }
 
 .profile__trip-text {
     margin-top: 10px;
+    border-bottom: 3px solid rgba(64,217,172,0.3);
 }
 
 .profile__review {
@@ -960,16 +980,20 @@ input[type=number]::-webkit-inner-spin-button {
 
 .profile__review-num {
     font-size: 19px;
+    margin-bottom: 5px;
 }
 
 .profile__review-text {
     margin-top: 10px;
+    border-bottom: 3px solid rgba(64,217,172,0.3);
 }
 
 .profile__tripreview-item-container {
     margin-top: 10px;
 }
 
+
+/* Profile/trip page css */
 .profiletrip__container {
     border-bottom: 1px solid #ebebeb;
     width: 700px;
@@ -1014,4 +1038,92 @@ input[type=number]::-webkit-inner-spin-button {
 
 .active {
     border-bottom: 3px solid #40d9ac
+}
+
+
+/* Profile/reviews page css */
+.profilereview__container {
+    border-bottom: 1px solid #ebebeb;
+    width: 700px;
+    height: auto;
+    padding: 20px 0px;
+}
+
+.profilereview__header-container {
+    display: flex;
+}
+
+.profilereview__header {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.profilereview__header-date {
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: auto;
+}
+
+.profilereview__title {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.profilereview__body {
+    margin-left: 10px;
+}
+
+
+/* Review Page css */
+.reviewpage-container {
+    width: 100%;
+    margin: 150px 30% -64px 30%;
+    /* overflow-x: hidden; */
+}
+
+.reviewpage-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewpage-form-header {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    /* overflow-x: hidden; */
+}
+
+.reviewpage-form-title {
+    margin-bottom: 10px;
+    width: 40%;
+    padding: 10px 10px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.reviewpage-form-textarea {
+    width: 40%;
+    height: 200px;
+    border: 1px solid #ebebeb;
+    padding: 10px 10px;
+}
+
+.reviewpage-button {
+    padding: 10px 10px;
+    background-color: #40d9ac;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 2px;
+    text-align: center;
+    border: 3px solid #40d9ac;
+    transition: all 0.25s ease 0s;
+    position: absolute;
+    margin: 20px auto 0px auto;
+}
+
+.reviewpage-button:hover {
+    background-color: #fdfdfd;
+    color: #40d9ac;
 }

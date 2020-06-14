@@ -21,6 +21,7 @@ const Signup = props => {
         event.preventDefault();
         await props.createUser(firstName, lastName, email, password, zipcode);
         props.closeModal();
+        window.location.reload();
     };
 
     return (

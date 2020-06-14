@@ -6,8 +6,8 @@ const ProfileTrips = props => {
     const tripsArray = (Object.values(props.trips));
 
     return (
-        <div>
-            {tripsArray.map(trip => {
+        <>
+            {tripsArray.reverse().map(trip => {
                 return (
                     <div key={trip.id} className="profiletrip__container">
                         <div className="profiletrip__header">{campsListObj[trip.campsite_id].campName}</div>
@@ -22,7 +22,7 @@ const ProfileTrips = props => {
                     </div>
                 )
             })}
-        </div>
+        </>
     )
 }
 
