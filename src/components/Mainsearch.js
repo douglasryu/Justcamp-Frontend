@@ -48,7 +48,7 @@ class Mainsearch extends React.Component {
         const { text } = this.state;
         return (
             <div className="searchbar__container">
-                <input onChange={this.handleSearchInput} type="search" value={text} className="search__input" placeholder="Try Yosemite, Napa, Moab..." />
+                <input onChange={this.handleSearchInput} type="search" value={text} className="search__input" placeholder="Try Camp Sugar Pine, Star Filled Skies..." />
                 {this.renderSuggestions()}
             </div>
         )

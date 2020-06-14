@@ -53,7 +53,9 @@ body {
     border-bottom: 1.5px solid #40d9ac;
 }
 
-.nav__near {
+.nav__near,
+.nav__about,
+.nav__justcash {
     cursor: not-allowed;
 }
 
