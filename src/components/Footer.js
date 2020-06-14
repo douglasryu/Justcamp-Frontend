@@ -28,7 +28,7 @@ const Footer = () => (
                 </div>
             </div>
             <div className="createdby">Created by</div>
-            <a className="createdby__name" href="https://github.com/douglasryu/Justcamp">Douglas Ryu <GitHubIcon className="createdby__github" /></a>
+            <a className="createdby__name" href="https://github.com/douglasryu">Douglas Ryu <GitHubIcon className="createdby__github" /></a>
         </div>
         <div className="footer__end">
             <div className="footer__end-left">© 2020 Justcamp, Inc. All rights reserved.</div>
